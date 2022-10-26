@@ -1,10 +1,10 @@
 import React from 'react';
 import Appointment from '../Appointment/Appointment';
 import Banner from '../Banner/Banner';
-import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
 import Information from '../Information/Information';
 import Services from '../Services/Services';
+import Testimonial from '../Testimonial/Testimonial';
 import Treatment from '../Treatment/Treatment';
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
             <Services />
             <Treatment />
             <Appointment />
-            {/* <Contact /> */}
+            <Testimonial />
             <Footer />
         </div>
     );
