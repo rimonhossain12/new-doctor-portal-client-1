@@ -1,15 +1,14 @@
 import React from 'react';
 
-const InfoCard = ({ information }) => {
-    // const {name,phone,img} = information;
+const InfoCard = ({ img, cardTitle, bgClass }) => {
     return (
-        <div className="card lg:max-w-lg bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={information?.Img} alt="Shoes" className="rounded-xl" />
+        <div className={`card lg:card-side shadow-xl ${bgClass}`}>
+            <figure className='pl-5 pt-3'>
+                <img src={img} alt="Album" />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{information?.name}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className="card-body text-white">
+                <h2 className="card-title">{cardTitle}</h2>
+                <p>Click the button to listen on Spotiwhy app.</p>
             </div>
         </div>
     );
