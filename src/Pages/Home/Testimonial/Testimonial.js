@@ -30,8 +30,10 @@ const Testimonial = () => {
     ]
     return (
         <div className='py-10'>
-            <h3 className='text-primary fw-bold'>Testimonial</h3>
-            <h2 className='capitalize font-light text-2xl'>What our patients says </h2>
+            <div className="testimonial_introduce py-12">
+                <h3 className='text-secondary fw-bold text-3xl'>Testimonial</h3>
+                <h2 className='capitalize font-light text-2xl'>What our patients says </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     Reviews.map(review => <Review
