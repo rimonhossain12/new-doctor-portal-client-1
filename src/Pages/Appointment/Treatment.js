@@ -14,11 +14,10 @@ const Treatment = ({ treatment, setTreatment }) => {
                 </p>
                 <div className="card-actions justify-center">
                     <div className="card-actions">
-                        <button disabled={slots.length === 0}
+                        <label htmlFor="booking-modal" className="btn modal-button btn-secondary capitalize"
+                            disabled={slots.length === 0}
                             onClick={() => setTreatment(treatment)}
-                            className="btn btn-secondary capitalize">
-                            Book appointment
-                        </button>
+                        > Book appointment</label>
                     </div>
                 </div>
             </div>
