@@ -15,11 +15,11 @@ const AvailableAppointment = ({ date }) => {
     return (
         <div className='py-5'>
             <h2 className='text-center text-secondary 
-            text-thin text-xl hover:cursor-pointer'
+            text-thin text-xl hover:cursor-pointer hover:underline pb-3'
             >This is Available Appointment
                 : {format(date, 'PP')}</h2>
 
-            <p className="text-center font-thin text-xl text-accent">Please select and services</p>
+            <p className="text-center font-thin text-xl text-accent">Please select a service</p>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-12 px-12'>
                 {
                     treatments.map(treatment => <Treatment
