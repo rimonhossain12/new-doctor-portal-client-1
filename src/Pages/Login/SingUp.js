@@ -1,10 +1,36 @@
 import React from 'react';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 const SingUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    let signInError;
+
+
+    if (user || gUser) {
+        console.log(user || gUser);
+    }
+    if (loading || gLoading) {
+        return <Loading />
+    }
+
+    if (error || gError) {
+        signInError = <p className='text-red-500'>{error?.message || gError?.message}</p>
+    }
+
     const onSubmit = (data) => {
+        createUserWithEmailAndPassword(data.email, data.password)
         console.log(data)
     };
 
@@ -87,7 +113,8 @@ const SingUp = () => {
                                 {errors.password?.type === 'minLength' && <p className='text-red-500 text-thin' role="alert"><small>{errors.password.message}</small> </p>}
                             </label>
                         </div>
-                        <input type="submit" value='Login' className='btn btn-accent text-white w-full max-w-xs' />
+                        {signInError}
+                        <input type="submit" value='Sign Up' className='btn btn-accent text-white w-full max-w-xs' />
                         <p className='py-2 text-center'>Already Sign Up!
                             <Link to="/login">
                                 <span className='text-primary'> Please Login</span>
