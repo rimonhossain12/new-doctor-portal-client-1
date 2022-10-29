@@ -14,8 +14,6 @@ const AvailableAppointment = ({ date }) => {
             .then(data => setServices(data))
     }, [])
 
-    // console.log('data found form ', treatment);
-
     return (
         <div className='py-5'>
             <h2 className='text-center text-secondary 
@@ -36,6 +34,7 @@ const AvailableAppointment = ({ date }) => {
                     treatment && <BookingModal
                         treatment={treatment}
                         date={date}
+                        setTreatment={setTreatment}
                     ></BookingModal>
                 }
             </div>
