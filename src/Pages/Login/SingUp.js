@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
@@ -36,9 +35,9 @@ const SingUp = () => {
     // const navigate = Navigate();
 
     const onSubmit = async (data) => {
-        // await createUserWithEmailAndPassword(data.email, data.password);
-        // await updateProfile({ displayName: data.name });
-        // navigate('/');
+        await createUserWithEmailAndPassword(data.email, data.password, data.name);
+        await updateProfile({ displayName: data.name });
+        navigate('/');
         // console.log(data)
     };
 
