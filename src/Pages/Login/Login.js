@@ -1,10 +1,16 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+
 
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+
     const onSubmit = (data) => {
         console.log(data)
     };
@@ -79,7 +85,10 @@ const Login = () => {
                         </p>
                     </form>
                     <div className="divider text-accent">OR</div>
-                    <button className="btn btn-active btn-outline btn-ghost">Continue with Google</button>
+                    <button
+                        className="btn btn-active btn-outline btn-ghost"
+                        onClick={() => signInWithGoogle()}
+                    >Continue with Google</button>
                 </div>
             </div>
         </div>
