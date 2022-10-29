@@ -15,7 +15,6 @@ const SingUp = () => {
                     <h2 className="text-center text-2xl text-accent font-bold">Sign Up</h2>
 
                     {/* react hooks form */}
-
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">

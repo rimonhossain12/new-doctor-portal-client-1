@@ -80,7 +80,6 @@ const Login = () => {
                     </form>
                     <div className="divider text-accent">OR</div>
                     <button className="btn btn-active btn-outline btn-ghost">Continue with Google</button>
-
                 </div>
             </div>
         </div>
