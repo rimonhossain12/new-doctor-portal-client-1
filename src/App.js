@@ -7,6 +7,7 @@ import Navbar from './Pages/Home/Navbar/Navbar';
 import Appointment from './Pages/Appointment/Appointment';
 import Login from './Pages/Login/Login';
 import SingUp from './Pages/Login/SingUp';
+import RequireRoute from './Pages/Login/RequireRoute';
 
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
 			  <Route path='/' element={<Home />} />
 			  <Route path='/home' element={<Home />} />
 			  <Route path='/about' element={<About />} />
-			  <Route path='/appointment' element={<Appointment />} />
+			  <Route path='/appointment' element={
+				  <RequireRoute>
+					  <Appointment />
+				  </RequireRoute>
+			  } />
 			  <Route path='/contact' element={<Contact />} />
 			  <Route path='/login' element={<Login />} />
 			  <Route path='/signup' element={<SingUp />} />
