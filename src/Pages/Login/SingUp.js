@@ -1,13 +1,14 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 
 const SingUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -29,8 +30,11 @@ const SingUp = () => {
         signInError = <p className='text-red-500'>{error?.message || gError?.message}</p>
     }
 
+    // const navigate = Navigate();
+
     const onSubmit = (data) => {
-        createUserWithEmailAndPassword(data.email, data.password)
+        createUserWithEmailAndPassword(data.email, data.password);
+        navigate('/');
         console.log(data)
     };
 
@@ -122,7 +126,10 @@ const SingUp = () => {
                         </p>
                     </form>
                     <div className="divider text-accent">OR</div>
-                    <button className="btn btn-active btn-outline btn-ghost">Continue with Google</button>
+                    <button
+                        onClick={() => signInWithGoogle()}
+                        className="btn btn-active btn-outline btn-ghost"
+                    >Continue with Google</button>
 
                 </div>
             </div>

@@ -13,28 +13,27 @@ const Login = () => {
 
     const [
         signInWithEmailAndPassword,
-        emailUser,
-        emailLoading,
-        emailError,
+        user,
+        loading,
+        error,
     ] = useSignInWithEmailAndPassword(auth);
-
 
     let signInError;
 
     const onSubmit = (data) => {
-        signInWithEmailAndPassword(data.email || data.password);
+        signInWithEmailAndPassword(data.email, data.password);
         console.log(data)
     };
 
-    if (gUser || emailUser) {
-        console.log(gUser);
+    if (gUser || user) {
+        console.log(gUser || user);
     }
 
-    if (gError || emailError) {
-        signInError = <p className='text-red-500 text-thin'><small>{gError?.message || emailError?.message}</small></p>
+    if (gError || error) {
+        signInError = <p className='text-red-500 text-thin'><small>{gError?.message || error?.message}</small></p>
     }
 
-    if (gLoading || emailLoading) {
+    if (gLoading || loading) {
         return <Loading />
     }
 
