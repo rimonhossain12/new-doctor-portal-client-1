@@ -1,20 +1,42 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+    const [
+        signInWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+    ] = useSignInWithEmailAndPassword(auth);
+
+
+    let signInError;
 
     const onSubmit = (data) => {
+        signInWithEmailAndPassword(data.email || data.password);
         console.log(data)
     };
 
+    if (gUser || emailUser) {
+        console.log(gUser);
+    }
+
+    if (gError || emailError) {
+        signInError = <p className='text-red-500 text-thin'><small>{gError?.message || emailError?.message}</small></p>
+    }
+
+    if (gLoading || emailLoading) {
+        return <Loading />
+    }
 
     return (
         <div className='flex justify-center items-center min-h-screen'>
@@ -77,6 +99,7 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <p className='text-red-500 text-thin' role="alert"><small>{errors.password.message}</small> </p>}
                             </label>
                         </div>
+                        {signInError}
                         <input type="submit" value='Login' className='btn btn-accent text-white w-full max-w-xs' />
                         <p className='py-2'>New to Doctor portal!
                             <Link to="/signup">
