@@ -8,6 +8,7 @@ import Appointment from './Pages/Appointment/Appointment';
 import Login from './Pages/Login/Login';
 import SingUp from './Pages/Login/SingUp';
 import RequireRoute from './Pages/Login/RequireRoute';
+import UserFeedBack from './Pages/Home/UserFeedBack/UserFeedBack';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 			  <Route path='/' element={<Home />} />
 			  <Route path='/home' element={<Home />} />
 			  <Route path='/about' element={<About />} />
+			  <Route path='/review' element={<UserFeedBack />} />
 			  <Route path='/appointment' element={
 				  <RequireRoute>
 					  <Appointment />

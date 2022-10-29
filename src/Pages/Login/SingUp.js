@@ -36,10 +36,10 @@ const SingUp = () => {
     // const navigate = Navigate();
 
     const onSubmit = async (data) => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
-        navigate('/');
-        console.log(data)
+        // await createUserWithEmailAndPassword(data.email, data.password);
+        // await updateProfile({ displayName: data.name });
+        // navigate('/');
+        // console.log(data)
     };
 
     return (

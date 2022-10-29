@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
@@ -22,11 +22,16 @@ const Login = () => {
 
     const onSubmit = (data) => {
         signInWithEmailAndPassword(data.email, data.password);
-        console.log(data)
+        // console.log(data)
     };
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location?.state?.from || "/";
+
     if (gUser || user) {
-        console.log(gUser || user);
+        // console.log(gUser || user);
+        navigate(from, { replace: true });
     }
 
     if (gError || error) {
